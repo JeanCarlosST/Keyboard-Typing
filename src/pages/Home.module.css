@@ -1,5 +1,7 @@
 main {
-    flex-grow: 1;
+    margin: auto;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }

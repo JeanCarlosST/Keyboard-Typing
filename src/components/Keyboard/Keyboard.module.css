@@ -1,10 +1,10 @@
 .keyboard {
-    max-width: 1000px;
+    /* max-width: 1000px; */
     width: 100%;
     display: grid;
     gap: 10px;
-    margin: auto;
-    padding: 10px;
+    margin: 10px;
+    /* padding: 10px; */
 }
 
 .keyboard_row {
