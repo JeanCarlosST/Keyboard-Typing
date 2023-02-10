@@ -1,11 +1,11 @@
+import { Home } from '../pages/Home'
 import './App.module.css'
 
-function App() {
-
+const App = () => {
+  
   return (
-    <div>
-    </div>
+    <Home />
   )
 }
 
-export default App
+export default App;

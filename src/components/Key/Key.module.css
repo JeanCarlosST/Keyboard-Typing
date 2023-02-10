@@ -1,0 +1,10 @@
+.key {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 5vh;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    /* padding: 25px 15px; */
+}
