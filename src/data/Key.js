@@ -30,6 +30,10 @@ export class Key {
         return this._isAlpha;
     }
 
+    get isModifier() {
+        return this._isModifier;
+    }
+
     get firstChar() {
         return this._firstChar;
     }

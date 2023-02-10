@@ -1,3 +1,4 @@
+import { useState } from "react";
 import KeysData from "../../data/Keys";
 import Key from "../Key/Key";
 import styles from "./Keyboard.module.css";
@@ -9,27 +10,37 @@ const Keyboard = () => {
     const fourthRow = KeysData.slice(41, KeysData.length - 1);
     const fifthRow = KeysData.slice(-1);
 
+    const [pressedKey, setPressedKey] = useState("");
+
+    document.onkeydown = (e) => {
+        setPressedKey(e.key);
+    };
+
+    document.onkeyup = (e) => {
+        setPressedKey("");
+    }
+
     return (
         <div className={styles.keyboard}>
             <div className={`${styles.keyboard_row} ${styles.row_1}`}>
                 {firstRow.map((key, index) => 
-                    <Key keyItem={key} key={index}/>)}
+                    <Key keyItem={key} pressedKey={pressedKey} key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_2}`}>
                 {secondRow.map((key, index) => 
-                    <Key keyItem={key} key={index}/>)}
+                    <Key keyItem={key} pressedKey={pressedKey} key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_3}`}>
                 {thirdRow.map((key, index) => 
-                    <Key keyItem={key} key={index}/>)}
+                    <Key keyItem={key} pressedKey={pressedKey} key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_4}`}>
                 {fourthRow.map((key, index) => 
-                    <Key keyItem={key} key={index}/>)}
+                    <Key keyItem={key} pressedKey={pressedKey} key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_5}`}>
                 {fifthRow.map((key, index) => 
-                    <Key keyItem={key} key={index}/>)}
+                    <Key keyItem={key} pressedKey={pressedKey} key={index}/>)}
             </div>
         </div>
     )
