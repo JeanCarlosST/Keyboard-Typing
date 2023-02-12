@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTargetText, selectTargetText } from '../../store/targetTextSlice';
 import styles from "./TargetText.module.css";
 
 const TargetText = () => {
-    const [text, setText] = useState();
+    const dispatch = useDispatch();
+    const targetText = useSelector(selectTargetText);
 
     const getRandomQuote = async () => {
         const response = await fetch("https://api.quotable.io/random?minLength=200");
         if(response.ok) {
             const json = await response.json();
-            setText(json.content);
+            dispatch(setTargetText(json.content));
         } else {
-            setText("Ups, there was an error");
         }
     }
 
@@ -20,7 +22,7 @@ const TargetText = () => {
 
     return (
         <div className={styles.targetText}>
-            <p>{text}</p>
+            <p>{targetText}</p>
         </div>
     );
 }
