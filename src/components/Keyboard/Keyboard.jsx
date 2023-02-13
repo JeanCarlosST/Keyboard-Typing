@@ -24,6 +24,9 @@ const Keyboard = () => {
     const handleKeyDown = (e) => {
         const key = getKey(e);
 
+        if(!key)
+            return;
+            
         if(key.code.includes("Shift") && !isShiftDown)
             dispatch(activate());
         else if(key.code === Modifiers.CapsLock) {
@@ -41,6 +44,9 @@ const Keyboard = () => {
 
     const handleKeyUp = (e) => {
         const key = getKey(e);
+
+        if(!key)
+            return;
 
         if(key.code.includes("Shift") && isShiftDown)
             dispatch(deactivate());

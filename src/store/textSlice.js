@@ -70,5 +70,11 @@ const textSlice = createSlice({
 
 export const selectTargetText = (state) => state.text.target;
 export const selectPortions = (state) => state.text.portions;
+export const selectCorrectCharacters = (state) => 
+    state.text.portions
+        .filter(p => p.status === "correct")
+        .map(p => p.text)
+        .join("")
+        .length;
 export const { setTargetText, addCharacter, removeLastCharacter } = textSlice.actions;
 export default textSlice.reducer;

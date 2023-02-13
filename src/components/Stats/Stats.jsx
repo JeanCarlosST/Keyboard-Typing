@@ -1,38 +1,58 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { count, countDownInitialState, selectCounter, selectStatus, setCountDownIntervalId } from "../../store/countDownSlice";
+import { selectPortions, selectCorrectCharacters } from '../../store/textSlice';
+import { formatTimerNumber } from "../../utils";
 import styles from "./Stats.module.css";
 
 const Stats = () => {
-    const countDownInitialTime = 120; // 2min
-    let intervalId;
-    let counter = countDownInitialTime;
-    
-    const formatNumber = (num) => {
-        return num.toString().padStart(2, "0");
-    }
+    const counter = useSelector(selectCounter);
+    const countDownStatus = useSelector(selectStatus);
+    const portions = useSelector(selectPortions);
+    const matchedCharactersAmount = useSelector(selectCorrectCharacters);
 
-    const [minutes, setMinutes] = useState(formatNumber(countDownInitialTime / 60));
-    const [seconds, setSeconds] = useState(formatNumber(countDownInitialTime % 60));
+    const dispatch = useDispatch();
 
     const startCountDown = () => {
-        intervalId = setInterval(() => {
-            counter--;
-            setMinutes(formatNumber(Math.floor(counter / 60)));
-            setSeconds(formatNumber(Math.floor(counter % 60)));
-
-            if(counter <= 0 && intervalId) {
-                clearInterval(intervalId)
-            }
+        const intervalId = setInterval(() => {
+            dispatch(count());
         }, 1000);
-        console.log(intervalId);
+
+        dispatch(setCountDownIntervalId(intervalId));
+    }
+
+    const getMinutes = () => {
+        return formatTimerNumber(Math.floor(counter / 60));
+    }
+
+    const getSeconds = () => {
+        return formatTimerNumber(Math.floor(counter % 60));
+    }
+
+    const getTypeSpeed = () => {
+        let timePassed = countDownInitialState.counter - counter;
+
+        if(timePassed === 0)
+            timePassed = 1;
+
+        timePassed /= 60;
+
+        const speed = matchedCharactersAmount / timePassed;
+
+        return Math.floor(speed);
+    }
+
+    if(countDownStatus === "not_started" && portions.length > 1) {
+        startCountDown();
     }
 
     return (
         <div className={styles.stats}>
             <div className={styles.counter}>
-                {`${minutes}:${seconds}`}
+                {`${getMinutes()}:${getSeconds()}`}
             </div>
             <div className={styles.typeSpeed}>
-                0 cpm
+                {getTypeSpeed()} cpm
             </div>
         </div>
     )

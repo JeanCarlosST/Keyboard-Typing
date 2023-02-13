@@ -3,13 +3,15 @@ import textReducer from './textSlice';
 import capsLockReducer from './capsLockSlice';
 import shiftReducer from './shiftSlice';
 import pressedKeysReducer from './pressedKeysSlice';
+import countDownReducer from './countDownSlice';
 
 const store = configureStore({
     reducer: {
         text: textReducer,
         capsLock: capsLockReducer,
         shift: shiftReducer,
-        pressedKeys: pressedKeysReducer
+        pressedKeys: pressedKeysReducer,
+        countDown: countDownReducer
     }
 });
 
