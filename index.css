@@ -15,4 +15,5 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    --main-color: rgb(1, 171, 32);
 }

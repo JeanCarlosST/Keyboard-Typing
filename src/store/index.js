@@ -1,16 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import targetTextReducer from './targetTextSlice';
+import textReducer from './textSlice';
 import capsLockReducer from './capsLockSlice';
 import shiftReducer from './shiftSlice';
 import pressedKeysReducer from './pressedKeysSlice';
 
 const store = configureStore({
     reducer: {
-        targetText: targetTextReducer,
+        text: textReducer,
         capsLock: capsLockReducer,
         shift: shiftReducer,
         pressedKeys: pressedKeysReducer
     }
 });
+
+store.subscribe(() => {
+    console.log(store.getState());
+})
 
 export default store;

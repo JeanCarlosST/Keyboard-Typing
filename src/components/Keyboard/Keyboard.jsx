@@ -1,5 +1,5 @@
 import { useState } from "react";
-import KeysData from "../../data/Keys";
+import KeysData, { getKey } from "../../data/Keys";
 import Key from "../Key/Key";
 import { addKey, removeKey, selectPressedKeys } from '../../store/pressedKeysSlice'
 import { selectShift, activate, deactivate } from '../../store/shiftSlice'
@@ -7,6 +7,7 @@ import { toggle, selectCapsLock } from '../../store/capsLockSlice'
 import styles from "./Keyboard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Modifiers } from "../../data/Key";
+import { addCharacter, removeLastCharacter } from "../../store/textSlice";
 
 const Keyboard = () => {
     const firstRow = KeysData.slice(0, 14);
@@ -17,23 +18,34 @@ const Keyboard = () => {
 
     const pressedKeys = useSelector(selectPressedKeys);
     const isShiftDown = useSelector(selectShift);
-    const isCapsLockEnable = useSelector(selectCapsLock)
+    const isCapsLockEnable = useSelector(selectCapsLock);
     const dispatch = useDispatch();
 
     const handleKeyDown = (e) => {
-        if(e.code.includes("Shift") && !isShiftDown)
+        const key = getKey(e);
+
+        if(key.code.includes("Shift") && !isShiftDown)
             dispatch(activate());
-        else if(e.code === Modifiers.CapsLock) 
+        else if(key.code === Modifiers.CapsLock) {
             dispatch(toggle())
-        else if(e.code !== Modifiers.Tab)
-            dispatch(addKey(e.code));
+        } else if(key.code === Modifiers.Backspace) {
+            dispatch(removeLastCharacter())
+        }
+        else if(key.isAlpha) {
+            dispatch(addKey(key.code));
+
+            const character = key.currentValue(isShiftDown, isCapsLockEnable);
+            dispatch(addCharacter(character));
+        }
     };
 
     const handleKeyUp = (e) => {
-        if(e.code.includes("Shift") && isShiftDown)
+        const key = getKey(e);
+
+        if(key.code.includes("Shift") && isShiftDown)
             dispatch(deactivate());
-        else
-            dispatch(removeKey(e.code));
+        else if(key.isAlpha) 
+            dispatch(removeKey(key.code));
     }
 
     document.onkeydown = handleKeyDown;

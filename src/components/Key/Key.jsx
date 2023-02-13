@@ -16,14 +16,7 @@ const Key = ({ keyItem, pressedKeys, isShiftDown, isCapsLockEnable }) => {
     let value;
 
     if(keyItem.isAlpha) {
-        if(isShiftDown && !isCapsLockEnable)
-            value = keyItem.altValue || keyItem.value.toUpperCase();
-        else if(isCapsLockEnable && !isShiftDown && keyItem.isCharacter)
-            value = keyItem.value.toUpperCase();
-        else if(isCapsLockEnable && isShiftDown)
-            value = keyItem.value;
-        else
-            value = keyItem.value;
+        value = keyItem.currentValue(isShiftDown, isCapsLockEnable);
     }
     else if(keyItem.code.includes("Shift"))
         value = "Shift";

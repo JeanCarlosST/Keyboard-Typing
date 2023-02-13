@@ -2,8 +2,8 @@ export const Modifiers = {
     None: "none",
     Tab: "Tab",
     CapsLock: "CapsLock",
-    LeftShift: "LeftShift",
-    RightShift: "RightShift",
+    ShiftLeft: "ShiftLeft",
+    ShiftRight: "ShiftRight",
     Backspace: "Backspace",
     Enter: "Enter"
 };
@@ -55,5 +55,23 @@ export class Key {
 
     get modifier() {
         return this._modifier;
+    }
+
+    currentValue(isShiftDown = false, isCapsLockEnable = false) {
+        if(!this.isAlpha)
+            return "";
+        
+        let value = "";
+
+        if(isShiftDown && !isCapsLockEnable)
+            value = this.altValue || this.value.toUpperCase();
+        else if(isCapsLockEnable && !isShiftDown && this.isCharacter)
+            value = this.value.toUpperCase();
+        else if(isCapsLockEnable && isShiftDown)
+            value = this.value;
+        else
+            value = this.value;
+
+        return value;
     }
 }

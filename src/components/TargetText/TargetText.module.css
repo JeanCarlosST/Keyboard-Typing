@@ -1,5 +1,29 @@
 .targetText {
-    font-size: 1.2rem;
-    /* margin: 10px; */
+    font-size: 1.6rem;
+    width: 100%;
     max-width: 1000px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.caret {
+    content: "";
+    width: 2px;
+    height: 1.6rem;
+    background-color: black;
+    display: block;
+}
+
+.correct_text {
+    color: var(--main-color);
+}
+
+.incorrect_text {
+    color: red;
+}
+
+.uncompleted_text {
+    color: black
 }

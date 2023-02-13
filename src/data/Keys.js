@@ -42,7 +42,7 @@ const Keys = [
     Key.alpha("Semicolon", ";", ":"),
     Key.alpha("Quote", "'", "\""),
     Key.modifier(Modifiers.Enter),  
-    Key.modifier(Modifiers.LeftShift),
+    Key.modifier(Modifiers.ShiftLeft),
     Key.alpha("KeyZ", "z"),
     Key.alpha("KeyX", "x"),
     Key.alpha("KeyC", "c"),
@@ -53,8 +53,12 @@ const Keys = [
     Key.alpha("Comma", ",", "<"),
     Key.alpha("Period", ".", ">"),
     Key.alpha("Slash", "/", "?"),
-    Key.modifier(Modifiers.RightShift),
+    Key.modifier(Modifiers.ShiftRight),
     Key.alpha("Space", " "),
 ];
+
+export const getKey = (keyboardEvent) => {
+    return Keys.find(key => key.code === keyboardEvent.code)
+}
 
 export default Keys;
