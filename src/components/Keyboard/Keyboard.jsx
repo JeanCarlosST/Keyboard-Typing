@@ -1,4 +1,3 @@
-import { useState } from "react";
 import KeysData, { getKey } from "../../data/Keys";
 import Key from "../Key/Key";
 import { addKey, removeKey, selectPressedKeys } from '../../store/pressedKeysSlice'
@@ -7,7 +6,7 @@ import { toggle, selectCapsLock } from '../../store/capsLockSlice'
 import styles from "./Keyboard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Modifiers } from "../../data/Key";
-import { addCharacter, removeLastCharacter } from "../../store/textSlice";
+import { addCharacterThunk, removeLastCharacter, selectIsAllTextCorrect } from "../../store/textSlice";
 import { selectStatus } from "../../store/countDownSlice";
 
 const Keyboard = () => {
@@ -40,7 +39,7 @@ const Keyboard = () => {
             dispatch(addKey(key.code));
 
             const character = key.currentValue(isShiftDown, isCapsLockEnable);
-            dispatch(addCharacter(character));
+            dispatch(addCharacterThunk(character));
         }
     };
 

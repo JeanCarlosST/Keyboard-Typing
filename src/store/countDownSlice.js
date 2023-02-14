@@ -32,7 +32,7 @@ const countDownSlice = createSlice({
 
 export const finishCountDownThunk = (payload) => {
     return (dispatch, getState) => {
-        dispatch(countDownSlice.actions.clearCountDownInterval());
+        dispatch(clearCountDownInterval());
         dispatch(clearAllKeys());
     }
 }
@@ -40,5 +40,5 @@ export const finishCountDownThunk = (payload) => {
 export const selectCountDownIntervalId = (state) => state.countDown.intervalId;
 export const selectCounter = (state) => state.countDown.counter;
 export const selectStatus = (state) => state.countDown.status;
-export const { count, setCountDownIntervalId, clearCountDownIntervalId, restartCountDown } = countDownSlice.actions;
+export const { count, setCountDownIntervalId, clearCountDownInterval, restartCountDown } = countDownSlice.actions;
 export default countDownSlice.reducer;

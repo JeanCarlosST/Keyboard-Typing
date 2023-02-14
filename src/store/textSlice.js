@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { finishCountDownThunk } from "./countDownSlice";
 
 const initialState = {
     index: 0,
@@ -73,6 +74,17 @@ const textSlice = createSlice({
     }
 });
 
+export const addCharacterThunk = (payload) => {
+    return (dispatch, getState) => {
+        dispatch(addCharacter(payload));
+        const isAllTextCorrect = selectIsAllTextCorrect(getState());
+        
+        if(isAllTextCorrect) {
+            dispatch(finishCountDownThunk());
+        }
+    }
+}
+
 export const selectTargetText = (state) => state.text.target;
 export const selectPortions = (state) => state.text.portions;
 export const selectCorrectCharacters = (state) => 
@@ -81,5 +93,9 @@ export const selectCorrectCharacters = (state) =>
         .map(p => p.text)
         .join("")
         .length;
+export const selectIsAllTextCorrect = (state) => {
+    const lastPortion = state.text.portions[state.text.portions.length - 2];
+    return state.text.portions.length === 2 && lastPortion?.text === state.text.target;
+}
 export const { setTargetText, reset, addCharacter, removeLastCharacter } = textSlice.actions;
 export default textSlice.reducer;
