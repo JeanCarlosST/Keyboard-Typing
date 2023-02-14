@@ -11,7 +11,7 @@ describe('currentValue method', () => {
 
         const result = key.currentValue(isShiftDown, isCapsLockEnable);
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should return capitalized value when shift is down", () => {
@@ -23,7 +23,7 @@ describe('currentValue method', () => {
 
         const result = key.currentValue(isShiftDown, isCapsLockEnable);
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should return norml value when caps lock is enable and shift is down", () => {
@@ -35,17 +35,17 @@ describe('currentValue method', () => {
 
         const result = key.currentValue(isShiftDown, isCapsLockEnable);
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should return empty string when is a modifier", () => {
-        const key = Keys.find(k => k.code === "LeftShift");
+        const key = Keys.find(k => k.code === "ShiftLeft");
 
         const expected = "";
 
         const result = key.currentValue();
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should return normal value", () => {
@@ -55,7 +55,7 @@ describe('currentValue method', () => {
 
         const result = key.currentValue();
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should return alt value when shift is down", () => {
@@ -65,6 +65,6 @@ describe('currentValue method', () => {
 
         const result = key.currentValue(isShiftDown);
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 });

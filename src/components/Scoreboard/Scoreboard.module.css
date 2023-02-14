@@ -1,0 +1,29 @@
+.scoreboardContainer {
+    width: 80%;
+    margin: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scoreboardContainer h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.scoreboard {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    border-spacing: 0;
+}
+
+.scoreboard td, .scoreboard th {
+    padding: 7px 0;
+}
+
+.scoreboard tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}

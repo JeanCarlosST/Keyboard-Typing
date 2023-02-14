@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { finishCountDownThunk, restartCountDown, selectStatus } from "../../store/countDownSlice";
 import { clearAllKeys } from "../../store/pressedKeysSlice";
+import { clearCurrentScore } from "../../store/scoreSlice";
 import { reset as resetText } from "../../store/textSlice";
 import styles from './StopRetryButton.module.css'
 
@@ -25,6 +26,7 @@ const StopRetryButton = () => {
             dispatch(restartCountDown());
             dispatch(resetText());
             dispatch(clearAllKeys());
+            dispatch(clearCurrentScore());
         }
     }
 

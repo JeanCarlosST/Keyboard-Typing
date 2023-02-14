@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { clearAllKeys } from "./pressedKeysSlice";
+import { addCurrentSpeed } from "./scoreSlice";
 
 export const countDownInitialState = {
-    counter: 120,
+    counter: 5,
     intervalId: -1,
     status: "not_started"
 };
@@ -34,6 +35,7 @@ export const finishCountDownThunk = (payload) => {
     return (dispatch, getState) => {
         dispatch(clearCountDownInterval());
         dispatch(clearAllKeys());
+        dispatch(addCurrentSpeed());
     }
 }
 

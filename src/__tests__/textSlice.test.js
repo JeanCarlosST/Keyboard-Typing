@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { describe, expect, it } from 'vitest'
 import textReducer, { setTargetText, addCharacter, removeLastCharacter, selectTargetText } from "../store/textSlice";
 
@@ -23,7 +22,7 @@ describe("setTargetText action", () => {
 
         const result = textReducer(state, setTargetText("The sky is blue"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it('should reset target text', () => { 
@@ -55,7 +54,7 @@ describe("setTargetText action", () => {
 
         const result = textReducer(state, setTargetText("The grass is green"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 });
 
@@ -90,7 +89,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("T"));
         
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add the first incorrect character", () => {
@@ -123,7 +122,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("r"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add a first incorrect character", () => {
@@ -156,7 +155,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("r"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add an incorrect character after correct", () => {
@@ -199,7 +198,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("g"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add a correct character after correct", () => {
@@ -237,7 +236,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("h"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add an incorrect character after incorrect", () => {
@@ -275,7 +274,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("g"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
     
     it("should add a correct character after incorrect", () => {
@@ -318,7 +317,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("h"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add an incorrect character after many correct", () => {
@@ -361,7 +360,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("j"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add a correct character after many portions", () => {
@@ -434,7 +433,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("k"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should add a incorrect character after many portions", () => {
@@ -502,7 +501,7 @@ describe('addCharacter action', () => {
 
         const result = textReducer(state, addCharacter("j"));
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 });
 
@@ -538,7 +537,7 @@ describe('removeLastCharacter action', () => {
 
         const result = textReducer(state, removeLastCharacter());
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
     
     it("should remove the character from portion", () => {
@@ -576,7 +575,7 @@ describe('removeLastCharacter action', () => {
 
         const result = textReducer(state, removeLastCharacter());
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
     
     it("should remove the character from portion and remove portion", () => {
@@ -619,7 +618,7 @@ describe('removeLastCharacter action', () => {
 
         const result = textReducer(state, removeLastCharacter());
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 
     it("should not remove characters at the beginning", () => {
@@ -647,7 +646,7 @@ describe('removeLastCharacter action', () => {
 
         const result = textReducer(state, removeLastCharacter());
 
-        expect(expected).toEqual(result);
+        expect(result).toEqual(expected);
     });
 });
 
@@ -668,6 +667,6 @@ describe('removeLastCharacter action', () => {
 
 //         const result = reducer
 
-//         expect(expected).toEqual(result);
+//         expect(result).toEqual(expected);
 //     });
 // });

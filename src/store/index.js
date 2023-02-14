@@ -4,6 +4,7 @@ import capsLockReducer from './capsLockSlice';
 import shiftReducer from './shiftSlice';
 import pressedKeysReducer from './pressedKeysSlice';
 import countDownReducer from './countDownSlice';
+import scoreReducer from './scoreSlice';
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         capsLock: capsLockReducer,
         shift: shiftReducer,
         pressedKeys: pressedKeysReducer,
-        countDown: countDownReducer
+        countDown: countDownReducer,
+        score: scoreReducer
     }
 });
 
