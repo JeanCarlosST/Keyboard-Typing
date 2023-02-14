@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { clearAllKeys } from "./pressedKeysSlice";
-import { addCurrentSpeed } from "./scoreSlice";
+import { addCurrentSpeed, clearCurrentScore } from "./scoreSlice";
+import { reset as resetText } from "./textSlice";
 
 export const countDownInitialState = {
-    counter: 5,
+    counter: 120,
     intervalId: -1,
     status: "not_started"
 };
@@ -31,11 +32,20 @@ const countDownSlice = createSlice({
     }
 });
 
-export const finishCountDownThunk = (payload) => {
-    return (dispatch, getState) => {
+export const finishCountDownThunk = () => {
+    return (dispatch) => {
         dispatch(clearCountDownInterval());
         dispatch(clearAllKeys());
         dispatch(addCurrentSpeed());
+    }
+}
+
+export const retryThunk = () => {
+    return (dispatch) => {
+        dispatch(restartCountDown());
+        dispatch(resetText());
+        dispatch(clearAllKeys());
+        dispatch(clearCurrentScore());
     }
 }
 

@@ -34,7 +34,7 @@ const scoreSlice = createSlice({
     }
 });
 
-export const updateCurrentSpeedThunk = (payload) => {
+export const updateCurrentSpeedThunk = () => {
     return (dispatch, getState) => {
         const state = getState();
         const counter = selectCounter(state);

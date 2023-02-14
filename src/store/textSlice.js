@@ -85,6 +85,17 @@ export const addCharacterThunk = (payload) => {
     }
 }
 
+export const getNewRandomQuoteThunk = () => {
+    return async (dispatch) => {
+        const response = await fetch("https://api.quotable.io/random?minLength=200");
+
+        if(response.ok) {
+            const json = await response.json();
+            dispatch(setTargetText(json.content));
+        }
+    }
+}
+
 export const selectTargetText = (state) => state.text.target;
 export const selectPortions = (state) => state.text.portions;
 export const selectCorrectCharacters = (state) => 

@@ -2,7 +2,7 @@ import Keyboard from "../components/Keyboard/Keyboard"
 import Navbar from "../components/Navbar/Navbar";
 import Stats from "../components/Stats/Stats";
 import TargetText from "../components/TargetText/TargetText";
-import StopRetryButton from "../components/StopRetryButton/StopRetryButton";
+import ControlButtons from "../components/ControlButtons/ControlButtons";
 import Scoreboard from "../components/Scoreboard/Scoreboard";
 import styles from "./Home.module.css";
 
@@ -14,7 +14,7 @@ const Home = () => {
                 <TargetText />
                 <Stats />
                 <Keyboard />
-                <StopRetryButton />
+                <ControlButtons />
                 <Scoreboard />
             </main>
         </>
