@@ -25,7 +25,7 @@ const Key = ({ keyItem, pressedKeys, isShiftDown, isCapsLockEnable }) => {
     }
 
     return (
-        <div className={`${styles.key} ${pressedClass}`}>
+        <div className={`${styles.key} ${keyItem.value === " " ? styles.spacebar : ""} ${pressedClass}`}>
             <span>{value}</span>
         </div>
     );

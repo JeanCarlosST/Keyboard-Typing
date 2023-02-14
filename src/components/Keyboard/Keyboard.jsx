@@ -8,6 +8,7 @@ import styles from "./Keyboard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Modifiers } from "../../data/Key";
 import { addCharacter, removeLastCharacter } from "../../store/textSlice";
+import { selectStatus } from "../../store/countDownSlice";
 
 const Keyboard = () => {
     const firstRow = KeysData.slice(0, 14);
@@ -19,12 +20,13 @@ const Keyboard = () => {
     const pressedKeys = useSelector(selectPressedKeys);
     const isShiftDown = useSelector(selectShift);
     const isCapsLockEnable = useSelector(selectCapsLock);
+    const countDownStatus = useSelector(selectStatus);
     const dispatch = useDispatch();
 
     const handleKeyDown = (e) => {
         const key = getKey(e);
 
-        if(!key)
+        if(countDownStatus === "finished" || !key)
             return;
             
         if(key.code.includes("Shift") && !isShiftDown)
@@ -45,7 +47,7 @@ const Keyboard = () => {
     const handleKeyUp = (e) => {
         const key = getKey(e);
 
-        if(!key)
+        if(countDownStatus === "finished" || !key)
             return;
 
         if(key.code.includes("Shift") && isShiftDown)

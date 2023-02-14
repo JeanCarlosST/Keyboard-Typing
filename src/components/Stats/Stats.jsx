@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { count, countDownInitialState, selectCounter, selectStatus, setCountDownIntervalId } from "../../store/countDownSlice";
+import { count, countDownInitialState, finishCountDownThunk, selectCounter, selectStatus, setCountDownIntervalId } from "../../store/countDownSlice";
 import { selectPortions, selectCorrectCharacters } from '../../store/textSlice';
 import { formatTimerNumber } from "../../utils";
 import styles from "./Stats.module.css";
@@ -44,6 +44,9 @@ const Stats = () => {
 
     if(countDownStatus === "not_started" && portions.length > 1) {
         startCountDown();
+    }
+    else if(counter <= 0) {
+        dispatch(finishCountDownThunk());
     }
 
     return (

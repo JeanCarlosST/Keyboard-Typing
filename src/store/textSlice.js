@@ -11,12 +11,17 @@ const textSlice = createSlice({
     initialState,
     reducers: {
         setTargetText: (state, action) => {
-            state.index = 0
+            state.index = 0;
             state.target = action.payload;
             state.portions = [{
                 text: action.payload,
                 status: "uncompleted"
             }];
+        },
+        reset: (state, action) => {
+            textSlice.caseReducers.setTargetText(
+                state, 
+                textSlice.actions.setTargetText(state.target));
         },
         addCharacter: (state, action) => {
             if(!action.payload)
@@ -76,5 +81,5 @@ export const selectCorrectCharacters = (state) =>
         .map(p => p.text)
         .join("")
         .length;
-export const { setTargetText, addCharacter, removeLastCharacter } = textSlice.actions;
+export const { setTargetText, reset, addCharacter, removeLastCharacter } = textSlice.actions;
 export default textSlice.reducer;

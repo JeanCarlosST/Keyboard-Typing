@@ -1,0 +1,23 @@
+
+.stopRetryButton {
+    font-size: 1.4rem;
+    padding: 15px 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+.stopRetryButton:hover {
+    cursor: pointer;
+}
+
+.retry {
+    background-color: var(--main-color);
+}
+
+.stop {
+    background-color: red;
+}
+
+.notStarted {
+    display: none;
+}

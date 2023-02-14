@@ -11,10 +11,13 @@ const pressedKeysSlice = createSlice({
         },
         removeKey: (state, action) => {
             return state.filter(key => key !== action.payload)
+        },
+        clearAllKeys: (state, action) => {
+            return [];
         }
     }
 });
 
 export const selectPressedKeys = (state) => state.pressedKeys;
-export const { addKey, removeKey } = pressedKeysSlice.actions;
+export const { addKey, removeKey, clearAllKeys } = pressedKeysSlice.actions;
 export default pressedKeysSlice.reducer;
