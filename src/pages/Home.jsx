@@ -14,6 +14,7 @@ const Home = () => {
                 <TargetText />
                 <Stats />
                 <Keyboard />
+                <hr />
                 <ControlButtons />
                 <Scoreboard />
             </main>

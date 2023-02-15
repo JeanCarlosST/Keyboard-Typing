@@ -1,7 +1,9 @@
 import styles from "./Key.module.css";
+import keyboardStyles from "../../data/keyboardStyles.module.css";
 import { Modifiers } from "../../data/Key";
+import { emptyCharacter } from "../../utils";
 
-const Key = ({ keyItem, pressedKeys, isShiftDown, isCapsLockEnable }) => {
+const Key = ({ keyItem, style, pressedKeys, isShiftDown, isCapsLockEnable }) => {
     let pressedClass = "";
 
     const isAlphaAndPressed = keyItem.isAlpha && pressedKeys.includes(keyItem.code);
@@ -10,12 +12,15 @@ const Key = ({ keyItem, pressedKeys, isShiftDown, isCapsLockEnable }) => {
     const isThisCapsLockEnable = isCapsLockEnable && keyItem.modifier === Modifiers.CapsLock;
 
     if(isAlphaAndPressed || isModifierAndPressed || isThisShiftDown || isThisCapsLockEnable) {
-        pressedClass = styles.pressed;
+        pressedClass = keyboardStyles.pressed;
     }
         
     let value;
 
-    if(keyItem.isAlpha) {
+    if(keyItem.code === "Space") {
+        value = emptyCharacter;
+    }
+    else if(keyItem.isAlpha) {
         value = keyItem.currentValue(isShiftDown, isCapsLockEnable);
     }
     else if(keyItem.code.includes("Shift"))
@@ -23,11 +28,14 @@ const Key = ({ keyItem, pressedKeys, isShiftDown, isCapsLockEnable }) => {
     else {
         value = keyItem.modifier;
     }
-
+    
     return (
-        <div className={`${styles.key} ${keyItem.value === " " ? styles.spacebar : ""} ${pressedClass}`}>
-            <span>{value}</span>
-        </div>
+        <button 
+            type="button" 
+            className={`${style.style} ${keyItem.value === " " ? styles.spacebar : ""} ${pressedClass}`}
+            >
+            {value}
+        </button>
     );
 }
 

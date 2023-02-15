@@ -6,8 +6,9 @@ import { toggle, selectCapsLock } from '../../store/capsLockSlice'
 import styles from "./Keyboard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Modifiers } from "../../data/Key";
-import { addCharacterThunk, removeLastCharacter, selectIsAllTextCorrect } from "../../store/textSlice";
+import { addCharacterThunk, removeLastCharacter } from "../../store/textSlice";
 import { selectStatus } from "../../store/countDownSlice";
+import { selectStyle } from "../../store/keyboardStyleSlice";
 
 const Keyboard = () => {
     const firstRow = KeysData.slice(0, 14);
@@ -20,6 +21,7 @@ const Keyboard = () => {
     const isShiftDown = useSelector(selectShift);
     const isCapsLockEnable = useSelector(selectCapsLock);
     const countDownStatus = useSelector(selectStatus);
+    const keyboardStyle = useSelector(selectStyle);
     const dispatch = useDispatch();
 
     const handleKeyDown = (e) => {
@@ -34,8 +36,9 @@ const Keyboard = () => {
             dispatch(toggle())
         } else if(key.code === Modifiers.Backspace) {
             dispatch(removeLastCharacter())
+            dispatch(addKey(key.code));
         }
-        else if(key.isAlpha) {
+        else if(key.isAlpha || key.code === Modifiers.Enter) {
             dispatch(addKey(key.code));
 
             const character = key.currentValue(isShiftDown, isCapsLockEnable);
@@ -51,7 +54,7 @@ const Keyboard = () => {
 
         if(key.code.includes("Shift") && isShiftDown)
             dispatch(deactivate());
-        else if(key.isAlpha) 
+        else if(key.isAlpha || ["Backspace", "Enter"].includes(key.code)) 
             dispatch(removeKey(key.code));
     }
 
@@ -67,6 +70,7 @@ const Keyboard = () => {
                         pressedKeys={pressedKeys} 
                         isShiftDown={isShiftDown} 
                         isCapsLockEnable={isCapsLockEnable}
+                        style={keyboardStyle}
                         key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_2}`}>
@@ -76,6 +80,7 @@ const Keyboard = () => {
                         pressedKeys={pressedKeys} 
                         isShiftDown={isShiftDown} 
                         isCapsLockEnable={isCapsLockEnable}
+                        style={keyboardStyle}
                         key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_3}`}>
@@ -85,6 +90,7 @@ const Keyboard = () => {
                         pressedKeys={pressedKeys} 
                         isShiftDown={isShiftDown} 
                         isCapsLockEnable={isCapsLockEnable}
+                        style={keyboardStyle}
                         key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_4}`}>
@@ -94,6 +100,7 @@ const Keyboard = () => {
                         pressedKeys={pressedKeys} 
                         isShiftDown={isShiftDown} 
                         isCapsLockEnable={isCapsLockEnable}
+                        style={keyboardStyle}
                         key={index}/>)}
             </div>
             <div className={`${styles.keyboard_row} ${styles.row_5}`}>
@@ -103,6 +110,7 @@ const Keyboard = () => {
                         pressedKeys={pressedKeys} 
                         isShiftDown={isShiftDown} 
                         isCapsLockEnable={isCapsLockEnable}
+                        style={keyboardStyle}
                         key={index}/>)}
             </div>
         </div>

@@ -5,6 +5,7 @@ import shiftReducer from './shiftSlice';
 import pressedKeysReducer from './pressedKeysSlice';
 import countDownReducer from './countDownSlice';
 import scoreReducer from './scoreSlice';
+import keyboardStyleReducer from './keyboardStyleSlice';
 
 const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
         shift: shiftReducer,
         pressedKeys: pressedKeysReducer,
         countDown: countDownReducer,
-        score: scoreReducer
+        score: scoreReducer,
+        keyboardStyle: keyboardStyleReducer
     }
 });
 

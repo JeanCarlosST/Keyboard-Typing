@@ -30,6 +30,9 @@ const scoreSlice = createSlice({
                 state.highScores.push(currentSpeed);
             else
                 state.highScores.splice(index, 0, currentSpeed);
+
+            if(state.highScores.length >= 10)
+                state.highScores = state.highScores.slice(0, 10);
         }
     }
 });

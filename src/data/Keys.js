@@ -1,3 +1,4 @@
+import { emptyCharacter } from '../utils';
 import { Key, Modifiers } from './Key' 
 
 const Keys = [

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { finishCountDownThunk, retryThunk, selectStatus } from "../../store/countDownSlice";
 import { getNewRandomQuoteThunk } from "../../store/textSlice";
+import KeyboardStyleDropdown from "../KeyboardStyleDropdown/KeyboardStyleDropdown";
 import styles from './ControlButtons.module.css'
 
 const ControlButtons = () => {

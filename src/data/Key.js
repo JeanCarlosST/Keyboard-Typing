@@ -1,3 +1,5 @@
+import { emptyCharacter } from "../utils";
+
 export const Modifiers = {
     None: "none",
     Tab: "Tab",

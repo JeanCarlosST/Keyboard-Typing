@@ -8,6 +8,8 @@
 body {
     background-color: #f1f1f1;
     height: 100vh;
+    overscroll-behavior: none;
+    overflow: auto;
 }
 
 #root {

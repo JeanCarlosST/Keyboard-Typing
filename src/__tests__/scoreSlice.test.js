@@ -65,4 +65,21 @@ describe('addScore action', () => {
 
         expect(result).toEqual(expected);
     });
+
+    it("should maintain the high score array with 10 element", () => {
+        const state = {
+            currentSpeed: 605,
+            highScores: [567, 550, 467, 453, 420, 323, 346, 121, 99, 90]
+        };
+
+        const expected = {
+            currentSpeed: 605,
+            highScores: [605, 567, 550, 467, 453, 420, 323, 346, 121, 99]
+        };
+
+        const result = scoreReducer(state, addCurrentSpeed());
+
+        expect(result).toEqual(expected);
+        expect(result.highScores).toHaveLength(10);
+    })
 });
