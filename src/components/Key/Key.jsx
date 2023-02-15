@@ -32,7 +32,7 @@ const Key = ({ keyItem, style, pressedKeys, isShiftDown, isCapsLockEnable }) => 
     return (
         <button 
             type="button" 
-            className={`${style.style} ${keyItem.value === " " ? styles.spacebar : ""} ${pressedClass}`}
+            className={`${styles.key} ${style.style} ${keyItem.value === " " ? styles.spacebar : ""} ${pressedClass}`}
             >
             {value}
         </button>

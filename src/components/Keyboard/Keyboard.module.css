@@ -10,6 +10,12 @@
     gap: 10px;
 }
 
+@media only screen and (max-width: 1000px) {
+    .keyboard_row, .keyboard {
+        gap: 5px;
+    }
+}
+
 .row_1 {
     grid-template-columns: repeat(13, 1fr) 2fr;
 }

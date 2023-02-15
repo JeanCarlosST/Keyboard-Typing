@@ -35,9 +35,37 @@ li span {
     font-size: 1.4rem;
 }
 
+@media only screen and (max-width: 1000px) {
+    .dropdown_container > span, .dropdown_button {
+        font-size: 1.2rem;
+    }
+    li span {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .dropdown_container > span, .dropdown_button {
+        font-size: 1rem;
+    }
+    li span {
+        font-size: 0.8rem;
+    }
+
+    .dropdown_container > * {
+        display: block;
+        text-align: right;
+    }
+
+    .dropdown_button {
+        margin-top: 5px;
+    }
+}
+
 .dropdown_button {
     padding: 10px 20px;
     background-color: white;
+    border: 1px solid black;
     border-radius: 5px;
     display: inline-flex;
     align-items: center;

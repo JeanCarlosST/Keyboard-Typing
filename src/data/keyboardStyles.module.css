@@ -7,13 +7,26 @@
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
-    font-size: 1.1rem;
     line-height: 50px;
     text-align: center;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+@media only screen and (max-width: 700px) {
+    .minimalist_key {
+        line-height: 35px;
+    }
+    
+    .algolia_key {
+        height: 35px !important;
+    }
+
+    .scoot_key {
+        line-height: 10px !important;
+    }
 }
 
 .minimalist_key:hover {
@@ -51,7 +64,6 @@
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
-    font-size: 18px;
 }
 
 .algolia_key:hover {
@@ -76,7 +88,6 @@
     cursor: pointer;
     display: inline-block;
     font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
-    font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     margin: 0 5px 10px 0;

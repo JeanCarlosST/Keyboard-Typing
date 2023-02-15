@@ -1,11 +1,23 @@
 .targetText {
     font-size: 1.6rem;
     width: 100%;
-    max-width: 1000px;
     background-color: white;
     padding: 15px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .targetText {
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .targetText {
+        font-size: 1.1rem;
+    }
 }
 
 .caret {
